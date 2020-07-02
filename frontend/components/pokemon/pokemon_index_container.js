@@ -1,17 +1,18 @@
-const { default: PokemonIndex } = require("./pokemon_index")
-
 import {connect} from 'react-redux';
 import PokemonIndex from './pokemon_index';
+import { selectAllPokemon } from '../../reducers/selectors';
+import { requestAllPokemon } from '../../actions/pokemon_actions';
 
 const mapStateToProps = state => {
+    const pokemon = selectAllPokemon(state);
     return {
-
+        pokemon
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-
+        requestAllPokemon: () => dispatch(requestAllPokemon())
     }
 }
 
