@@ -8,3 +8,5 @@ class PokemonIndex extends React.Component {
         )
     }
 }
+
+export default PokemonIndex;
