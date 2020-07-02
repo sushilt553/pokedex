@@ -207,10 +207,15 @@ var PokemonDetail = /*#__PURE__*/function (_React$Component) {
         return null;
       }
 
+      var items = this.props.items.map(function (item, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: i
+        }, item.name);
+      });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, poke.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "".concat(poke.image_url),
         alt: "".concat(poke.name)
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, poke.attack), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, poke.defense), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, poke.poke_type), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, poke.moves));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, poke.attack), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, poke.defense), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, poke.poke_type), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, poke.moves), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, items));
     }
   }]);
 
@@ -239,9 +244,19 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state, props) {
   // debugger
-  var pokemon = state.entities.pokemon[props.match.params.pokemonId];
+  var pokemon = state.entities.pokemon[props.match.params.pokemonId]; // debugger;
+
+  var items = [];
+
+  if (pokemon && pokemon.item_ids) {
+    items = pokemon.item_ids.map(function (id) {
+      return state.entities.items[id];
+    });
+  }
+
   return {
-    pokemon: pokemon
+    pokemon: pokemon,
+    items: items
   };
 };
 

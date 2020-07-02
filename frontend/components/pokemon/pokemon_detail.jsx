@@ -22,6 +22,8 @@ class PokemonDetail extends React.Component {
             return null;
         }
 
+        let items = this.props.items.map((item, i) => <li key={i}>{item.name}</li>)
+
         return (
             <ul>
                 <h1>{poke.name}</h1>
@@ -30,6 +32,9 @@ class PokemonDetail extends React.Component {
                 <li>{poke.defense}</li>
                 <li>{poke.poke_type}</li>
                 <li>{poke.moves}</li>
+                <ul>
+                    {items}
+                </ul>
             </ul> 
         )
     }
