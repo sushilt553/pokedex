@@ -1,5 +1,6 @@
 import {connect} from 'react-redux';
 import PokemonDetail from './pokemon_detail';
+import { requestOnePokemon } from '../../actions/pokemon_actions';
 
 const mapStateToProps = state => {
     return {
@@ -9,7 +10,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        
+        requestOnePokemon: (pokemonId) => dispatch(requestOnePokemon(pokemonId))
     }
 }
 
