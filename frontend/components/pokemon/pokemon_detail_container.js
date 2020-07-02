@@ -2,9 +2,11 @@ import {connect} from 'react-redux';
 import PokemonDetail from './pokemon_detail';
 import { requestOnePokemon } from '../../actions/pokemon_actions';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, props) => {
+    // debugger
+    const pokemon = state.entities.pokemon[props.match.params.pokemonId];
     return {
-
+        pokemon
     }
 }
 
